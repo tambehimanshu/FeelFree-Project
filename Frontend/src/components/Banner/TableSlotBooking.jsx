@@ -17,7 +17,8 @@ export default function TableSlotBooking() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(
+    console.log();
+    (
       `Reservation confirmed for ${name}.\nSeats: ${seats}\nTime slot: ${timeSlot} mins\nMeal: ${mealType}\nTotal Charge: ₹${getExtraCharge()}`
     );
   };

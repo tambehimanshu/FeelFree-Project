@@ -36,16 +36,16 @@ function Navbar1() {
         <span>Logout</span>
       </button>
     ) : (
-      <button onClick={() => navigate('/login')} className="px-3 py-2 bg-white text-purple-700 rounded-full font-semibold hover:bg-purple-100 transition duration-300 flex items-center space-x-2">
-        <FiKey />
-        <span>Login</span>
+      <button onClick={() => navigate('/login')} className="px-3 py-2 bg-white text-purple-700 font-semibold hover:bg-purple-100 transition duration-300 flex items-center space-x-2">
+       
+        <span><Login/></span>
       </button>
     );
   };
 
   const renderMobilAuthBtn = () => {
     return isAuthenticated ? (
-      <button onClick={handleLogout} className="w-full px-4 py-3 bg-white text-purple-700 rounded-full font-semibold flex items-center justify-center space-x-2 text-sm">
+      <button onClick={handleLogout} className="w-full px-4 py-3 bg-white text-purple-700 font-semibold flex items-center justify-center space-x-2 text-sm">
         <FiLogOut />
         <span>Logout</span>
       </button>
@@ -53,9 +53,8 @@ function Navbar1() {
       <button onClick={() => {
         navigate('/login');
         setIsOpen(false);
-      }} className="w-full px-4 py-3 bg-white text-purple-700 rounded-full font-semibold flex items-center justify-center space-x-2 text-sm">
-        <FiKey />
-        <span>Login</span>
+      }} className="w-full px-4 py-3 bg-white text-purple-700 font-semibold flex items-center justify-center space-x-2 text-sm">
+       
       </button>
     );
   };
@@ -133,7 +132,9 @@ function Navbar1() {
         </NavLink>
       ))}
       <div className="mt-4">{renderMobilAuthBtn()}</div>
+      <Login/>
     </div>
+    
   )}
 </nav>
 

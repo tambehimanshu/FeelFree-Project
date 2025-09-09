@@ -26,7 +26,7 @@ const XeroxBooking = () => {
   const [timeSlot, setTimeSlot] = useState("");
   const [file, setFile] = useState(null);
   const [pages, setPages] = useState(0);
-  const [copies, setCopies] = useState("");
+  const [copies, setCopies] = useState(1);
   const [isBackToBack, setIsBackToBack] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
   const [availableSlots, setAvailableSlots] = useState([]);
@@ -38,7 +38,7 @@ const XeroxBooking = () => {
   }, []);
 
   const calculateCost = (pageCount, back, copyCount) => {
-    const rate = back ? 2:3;
+    const rate = back ? 3 : 2;
     return pageCount * rate * copyCount;
   };
 
@@ -76,90 +76,103 @@ const XeroxBooking = () => {
       return;
     }
     alert(`Booking confirmed for ${name} at ${timeSlot}. Total cost: ₹${totalCost}`);
-    // Backend call can be added here
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 mt-10 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-6 text-indigo-700">📄 Xerox Booking & Payment</h2>
+    <div className="text-center mt-10">
+      {/* Button to open modal */}
+      <button
+        className="btn bg-indigo-600 text-white px-4 py-2 rounded"
+        onClick={() => document.getElementById("xerox_modal").showModal()}
+      >
+        📄 Book Xerox Slot
+      </button>
 
-      {/* Booked Slots Display */}
-      <div className="mb-4">
-        <p className="font-medium text-gray-700">🔒 Booked Slots:</p>
-        <div className="flex flex-wrap gap-2 mt-1">
-          {bookedSlots.map((slot, i) => (
-            <span key={i} className="bg-red-100 text-red-700 px-2 py-1 rounded text-sm">
-              {slot}
-            </span>
-          ))}
+      {/* Modal */}
+      <dialog id="xerox_modal" className="modal">
+        <div className="modal-box max-w-2xl">
+          {/* Close button */}
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+
+          <h2 className="text-2xl font-bold mb-6 text-indigo-700">
+            Xerox Booking & Payment
+          </h2>
+
+          {/* Form inside modal */}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+            <select
+              value={timeSlot}
+              onChange={(e) => setTimeSlot(e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            >
+              <option value="">-- Select Available Slot --</option>
+              {availableSlots.map((slot, i) => (
+                <option key={i} value={slot}>
+                  {slot}
+                </option>
+              ))}
+            </select>
+
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={handleFileChange}
+              className="w-full p-2 border rounded"
+              required
+            />
+
+            <label className="block">
+              <input
+                type="checkbox"
+                checked={isBackToBack}
+                onChange={handleCheckbox}
+                className="mr-2"
+              />
+              Back to Back Copy (₹3/page)
+            </label>
+
+            <input
+              type="number"
+              min="1"
+              value={copies}
+              onChange={handleCopiesChange}
+              className="w-full p-2 border rounded"
+              placeholder="Number of Copies"
+              required
+            />
+
+            <div className="bg-gray-50 p-3 rounded shadow-sm text-slate-700">
+              <p>Total Pages: <strong>{pages}</strong></p>
+              <p>Copies: <strong>{copies}</strong></p>
+              <p>
+                Total Cost:{" "}
+                <strong className="text-indigo-600 text-lg">₹{totalCost}</strong>
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              className="bg-indigo-600 text-white px-4 py-2 rounded w-full"
+            >
+              Pay ₹{totalCost} & Submit
+            </button>
+          </form>
         </div>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-2 border rounded"
-          required
-        />
-
-        {/* Slot Selection */}
-        <select
-          value={timeSlot}
-          onChange={(e) => setTimeSlot(e.target.value)}
-          className="w-full p-2 border rounded"
-          required
-        >
-          <option value="">-- Select Available Slot --</option>
-          {availableSlots.map((slot, i) => (
-            <option key={i} value={slot}>{slot}</option>
-          ))}
-        </select>
-
-        {/* PDF Upload */}
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={handleFileChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-
-        {/* Back to Back Option */}
-        <label className="block">
-          <input
-            type="checkbox"
-            checked={isBackToBack}
-            onChange={handleCheckbox}
-            className="mr-2"
-          />
-          <span className="text-slate-700">Back to Back Copy (₹3/page)</span>
-        </label>
-
-        {/* Number of Copies */}
-        <input
-          type="number"
-          min="1"
-          value={copies}
-          onChange={handleCopiesChange}
-          className="w-full p-2 border rounded"
-          placeholder="Number of Copies"
-          required
-        />
-
-        {/* Cost Display */}
-        <div className="bg-gray-50 p-3 rounded shadow-sm text-slate-700">
-          <p>Total Pages: <strong>{pages}</strong></p>
-          <p>Copies: <strong>{copies}</strong></p>
-          <p>Total Cost: <strong className="text-indigo-600 text-lg">₹{totalCost}</strong></p>
-        </div>
-
-        <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded w-full">
-          Pay ₹{totalCost} & Submit
-        </button>
-      </form>
+      </dialog>
     </div>
   );
 };
