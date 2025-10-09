@@ -35,7 +35,7 @@ const ServicesSection = () => {
 
           {/* Temple Darshan Booking */}
           <div
-            onClick={() => navigate('/darshan-booking')}
+            onClick={() => navigate('/darshanbooking')}
             className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all text-left"
           >
             <BuildingStorefrontIcon className="h-10 w-10 text-indigo-600 mb-4" />

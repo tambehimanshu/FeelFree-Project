@@ -4,7 +4,7 @@ import Navbar1 from '../../Navbar1'
 function Orders() {
   return (
     <div>
-      <Navbar1/>
+     
     </div>
   )
 }

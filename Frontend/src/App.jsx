@@ -8,29 +8,39 @@ import AboutPage from './components/pages/about/AboutPage'
 import Profile from './components/pages/profile/Profile'
 import Login from './components/Login/Login'
 import ServicesSection from './components/Banner/ServicesSection'
-import XeroxBooking from './components/Banner/XeroxBooking'
-import Payment from './components/Banner/Payment'
+
 import FuelSlotBooking from './components/Banner/FuelSlotBooking'
-import TableReservation from './components/Banner/TableSlotBooking'
-import TableSlotBooking from './components/Banner/TableSlotBooking'
+import TableReservation from './components/TableBooking/TableSlotBooking'
+import TableSlotBooking from './components/TableBooking/TableSlotBooking'
+import XeroxBooking from './components/XeroxSlotBooking/Xerox2'
+import Payment from './components/Banner/Payment'
+import DarshanBooking from './components/Darshan/DarshanBooking'
+import TableBooking from './components/TableBooking/TableSlotBooking'
+
 
 function App() {
   return (
      
- <Routes>
-  <Route path='/' element={<Home/>}/>
+  <Routes>
+   <Route path='/' element={<Home/>}/>
    <Route path='/orders' element={<Orders/>}/>
-    <Route path='/about' element={<AboutPage/>}/>
-     <Route path='/profile' element={<Profile/>}/>
-     <Route path='/login' element={<Home/>}/>
-        <Route path='/services' element={<ServicesSection/>}/>
-         <Route path='/xerox-booking' element={<XeroxBooking/>}/>
-              <Route path="/fuelSlot-booking" element={<FuelSlotBooking />} />
-              <Route path="/table-booking" element={<TableSlotBooking />} />
-
+   <Route path='/about' element={<AboutPage/>}/>
+   <Route path='/profile' element={<Profile/>}/>
+   <Route path='/login' element={<Home/>}/>
+   <Route path='/services' element={<ServicesSection/>}/>
+   <Route path='/xerox-booking' element={<XeroxBooking/>}/>
+   <Route path="/fuelSlot-booking" element={<FuelSlotBooking />} />
+   <Route path="/table-booking" element={<TableBooking />} />
+   <Route path="/payment" element={<Payment/>} />
+   <Route path="/darshanBooking" element={<DarshanBooking/>} />
+   
  </Routes>
+
  
   )
 }
 
-export default App
+export default App 
+
+// on subit payment form should come which include the current conline phone pay and all
+// profile done log out

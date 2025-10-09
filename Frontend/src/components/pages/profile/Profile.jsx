@@ -20,14 +20,14 @@ const Profile = () => {
   ];
 
   return (
-    <section className="relative bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col items-center px-6 py-16 overflow-hidden">
+    <section className="bg-whie text-gray-100 min-h-screen flex flex-col items-center w-full overflow-hidden">
       <Navbar1/>
       {/* Background Blobs */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+      {/* <div className="absolute top-0 left-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div> */}
 
       {/* Profile Card */}
-      <div className="relative z-10 w-full max-w-4xl bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8">
+      <div className="relative z-10 w-full max-w-4xl bg-slate-300 shadow-xl p-8">
         
         {/* User Info */}
         <div className="flex flex-col items-center text-center">

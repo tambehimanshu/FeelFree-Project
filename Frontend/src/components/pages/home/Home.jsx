@@ -4,7 +4,7 @@ import Banner from '../../Banner/Banner'
 import HeroSection from '../../Banner/HeroSection'
 import ServicesSection from '../../Banner/ServicesSection'
 import HowItWorksSection from '../../Banner/HowItWorksSections'
-import  { XeroxSlotBooking } from '../../Banner/BookingFormSection'
+
 import Footer from '../../Footer'
 //import QRScanner from '../../Banner/QRScanner'
 
